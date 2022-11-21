@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!-- 根标签beans,里面封装了全部的bean-->
+<beans>
+    <component-scan basePackages = "com.acme"/>
+    <transaction/>
+    <bean id="datasourceProperty" class="com.acme.jdbc.DatasourceProperty">
+        <property name="driverClassName" value="com.mysql.cj.jdbc.Driver"/>
+        <property name="url" value="jdbc:mysql://localhost:3306/spring?timezone=UTC;serverTimezone=UTC;allowPublicKeyRetrieval=true;useSSL=true;characterEncoding=utf-8"/>
+        <property name="username" value="root"/>
+        <property name="password" value="root"/>
+    </bean>
+
+    <bean id="druidDataSourceManager" class="com.acme.jdbc.DruidDataSourceManager">
+        <property name="datasourceProperty" ref="datasourceProperty"/>
+    </bean>
+</beans>
